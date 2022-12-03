@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="jp-JP">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Paint Application Sample</title>
+	<style>
+		* {
+			touch-action: none;
+			font-size: 12px;
+		}
+
+		#main {
+			display:flex;
+		}
+		#canvas {
+			flex: 0 1 auto;
+		}
+
+		.layers__layer {
+			/* height:3em; */
+			display: flex;
+			flex-direction: row;
+			border-top: 1px solid black;
+			border-left: 1px solid black;
+			border-right: 1px solid black;
+		}
+		
+		.layers__actions button {
+			margin:0;
+			font-size: 16px;
+			flex:1 0 auto;
+			padding:0;
+			border-radius: 0;
+			border:1px solid gray;
+		}
+		.layers__actions button:first-child {
+			border-radius: 6px 0 0 6px;
+		}
+		.layers__actions button:last-child {
+			border-radius: 0 6px 6px 0;
+		}
+		
+		button {
+			border-radius: 4px;
+			margin:0;
+			color:white;
+			font-size:7px;
+			background:rgb(101, 99, 121);
+			border:none;
+		}
+
+		button.is-active {
+			background:rgb(157, 154, 184);
+			font-weight: 700;
+		}
+
+		ol {
+			padding:0;
+		}
+
+		p {
+			margin:3px;
+		}
+		
+
+		.is-selected {
+			background:rgb(206, 223, 243);
+		}
+
+		.transparent-bg {
+			background-image: linear-gradient(45deg, rgb(220, 220, 220) 25%, transparent 25%),
+				linear-gradient(-45deg, rgb(220, 220, 220) 25%, transparent 25%),
+				linear-gradient(45deg, transparent 75%, rgb(220, 220, 220) 75%),
+				linear-gradient(-45deg, transparent 75%, rgb(220, 220, 220) 75%);
+			background-color: white;
+			background-size: 8px 8px;
+			background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+		}
+
+		.debug-preview {
+			border: solid black 1px;
+			margin: 4px;
+		}
+	</style>
+</head>
+<body>
+	<main id="main">
+		<div id="tool"></div>
+		<canvas class="transparent-bg" id="canvas" width="512" height="512"></canvas>
+		<div id="layers"></div>
+	</main>
+	<footer id="footer">
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.7.11/dist/vue.js"></script>
+	<script src="./index.js" type="module"></script>
+</body>
+</html>
